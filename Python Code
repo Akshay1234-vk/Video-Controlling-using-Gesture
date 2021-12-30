@@ -1,0 +1,24 @@
+import serial # Serial imported for Serial communication
+import time # Using Delay Functions
+import pyautogui
+
+ArduinoSerial = serial.Serial('com3',9600) #Create Serial port object called arduinoSerialData
+time.sleep(2) #wait for 2 seconds for the communication to get established
+
+while 1:
+    incoming = str (ArduinoSerial.readline()) #read the serial data and print it as line
+    print (incoming)
+    
+    if 'Play/Pause' in incoming:
+        pyautogui.typewrite(['space'], 0.2)
+
+    if 'VolumeUp' in incoming:
+        pyautogui.typewrite (['up'], 0.2)
+
+    if 'VolumeDown' in incoming:
+        pyautogui.typewrite(['down'], 0.2)
+
+    
+
+    incoming = "";
+    
